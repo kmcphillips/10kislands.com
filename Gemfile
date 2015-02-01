@@ -21,4 +21,5 @@ group :development, :test do
   gem 'thin'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'quiet_assets'
 end
