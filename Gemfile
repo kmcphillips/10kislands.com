@@ -14,10 +14,13 @@ gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-passenger'
 
-group :development, :test do
+group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'thin'
+end
+
+group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'quiet_assets'
