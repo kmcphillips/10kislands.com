@@ -9,7 +9,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 
-# gem 'capistrano-rails', group: :development
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
+gem 'capistrano-passenger'
 
 group :development, :test do
   gem 'byebug'
