@@ -1,16 +1,7 @@
 <div class="home-part-2">
+  <%= render "card", card: @cards.first, index: 1, hidden: true %>
+
   <% @cards.each_with_index do |card, index| %>
-
-    <div class="<%= class_for_index(index) %>">
-      <div class="gallery clearfix">
-        <%= link_to card.link, rel: "prettyPhoto" do %>
-          <span>
-            <%= simple_format(card.description) %>
-          </span>
-          <%= image_tag card.background.url, alt: card.title %>
-        <% end %>
-      </div>
-    </div>
-
+    <%= render "card", card: card, index: index %>
   <% end %>
 </div>

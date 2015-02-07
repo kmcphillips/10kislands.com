@@ -1,0 +1,10 @@
+<div class="<%= class_for_index(index) %>" <%= 'style="display: none"'.html_safe if local_assigns[:hidden] %>>
+  <div class="gallery clearfix">
+    <%= link_to card.link, rel: "prettyPhoto" do %>
+      <span>
+        <%= simple_format(card.description) %>
+      </span>
+      <%= image_tag card.background.url, alt: card.title %>
+    <% end %>
+  </div>
+</div>
