@@ -14,6 +14,8 @@ gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-passenger'
 
+gem 'acts_as_list'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'

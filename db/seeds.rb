@@ -5,6 +5,7 @@ if Card.any?
   Card.destroy_all
 end
 
+puts "Creating example cards"
 Card.create!(
   description: "\"The U Part 2\"\nESPN 30 for 30\nOriginal Music, SFX and Mix",
   link: "http://www.youtube.com/watch?v=4tOsFQAN9Yc&sns=em",
@@ -40,3 +41,5 @@ Card.create!(
   link: "https://www.youtube.com/watch?v=DeMInwNB4Ms&index=5&list=UUWZTQLvNSm92fZPnjVGFRIA",
   # image: images/home-pic5.png
 )
+
+puts "  Created #{ Card.count } cards"
