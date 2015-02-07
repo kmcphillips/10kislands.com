@@ -15,6 +15,7 @@ gem 'capistrano-rvm'
 gem 'capistrano-passenger'
 
 gem 'acts_as_list'
+gem 'paperclip'
 
 group :development do
   gem 'web-console', '~> 2.0'

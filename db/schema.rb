@@ -11,14 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207212922) do
+ActiveRecord::Schema.define(version: 20150207213627) do
 
   create_table "cards", force: :cascade do |t|
-    t.text     "description", null: false
-    t.string   "link",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "description",             null: false
+    t.string   "link",                    null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "position"
+    t.string   "background_file_name"
+    t.string   "background_content_type"
+    t.integer  "background_file_size"
+    t.datetime "background_updated_at"
   end
 
   add_index "cards", ["position"], name: "index_cards_on_position"

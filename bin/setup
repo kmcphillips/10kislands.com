@@ -8,7 +8,8 @@ Dir.chdir APP_ROOT do
   if system("which convert")
     puts "Imagemagick Found"
   else
-    puts "Imagemagick Not found! Required for 'rmagick' gem."
+    puts "Imagemagick Not found!"
+    puts "Resizing and uploading images will not function without it."
     puts ""
 
     if /darwin/ =~ RUBY_PLATFORM
