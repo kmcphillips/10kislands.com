@@ -3,11 +3,11 @@
 
     <div class="<%= class_for_index(index) %>">
       <div class="gallery clearfix">
-        <%= link_to card.link, title: "TODO", rel: "prettyPhoto" do %>
+        <%= link_to card.link, rel: "prettyPhoto" do %>
           <span>
             <%= simple_format(card.description) %>
           </span>
-          <%= image_tag card.background.url, alt: "TODO" %>
+          <%= image_tag card.background.url, alt: card.title %>
         <% end %>
       </div>
     </div>

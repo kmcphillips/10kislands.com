@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Card, :type => :model do
-  context "validations" do
-    let(:card){ Card.new(description: "A video\nAbout Stuff\n2015", link: "http://www.youtube.com/watch?v=abcdefghijk&sns=em") }
+  let(:card){ Card.new(description: "A video\nAbout Stuff\n2015", link: "http://www.youtube.com/watch?v=abcdefghijk&sns=em") }
 
+  context "validations" do
     it "should be valid" do
       expect(card).to be_valid
     end
@@ -23,6 +23,12 @@ RSpec.describe Card, :type => :model do
         card.link = "http://vimeo.com/fancy"
         expect(card).to_not be_valid
       end
+    end
+  end
+
+  describe "#title" do
+    it "should be a simplified version of description" do
+      expect(card.title).to eq("A video About Stuff 2015")
     end
   end
 end

@@ -13,4 +13,10 @@ class Card < ActiveRecord::Base
 
   scope :sorted, ->{ order(position: :asc) }
 
+  def title
+    if description.present?
+      description.gsub("\n", " ")
+    end
+  end
+
 end
