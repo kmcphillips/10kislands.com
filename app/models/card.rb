@@ -11,4 +11,6 @@ class Card < ActiveRecord::Base
   }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
 
+  scope :sorted, ->{ order(position: :asc) }
+
 end
