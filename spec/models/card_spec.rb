@@ -14,6 +14,11 @@ RSpec.describe Card, :type => :model do
         expect(card).to be_valid
       end
 
+      it "should validate it is a YouTube link including short domain" do
+        card.link = "http://youtu.be/123152asdf"
+        expect(card).to be_valid
+      end
+
       it "should not allow other video sites" do
         card.link = "http://vimeo.com/fancy"
         expect(card).to_not be_valid
