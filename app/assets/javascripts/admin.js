@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require twitter/bootstrap
 
 function previewImage(image, previewId) {
   var reader = new FileReader();
