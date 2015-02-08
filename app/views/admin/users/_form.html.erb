@@ -1,25 +1,23 @@
-<%= form_for([:admin, @user]) do |f| %>
+<%= form_for([:admin, @user], html: { class: "" }) do |f| %>
   <%= error_messages(f) %>
 
-  <div>
-    <% if @user == current_user %>
-      This is you
-    <% end %>
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "User's name" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, class: "form-control", placeholder: "example@10kislands.com" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', admin_users_path, class: "btn btn-default" %>
   </div>
 <% end %>
