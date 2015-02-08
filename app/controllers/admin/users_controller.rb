@@ -23,10 +23,18 @@ class Admin::UsersController < AdminController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to admin_users_path, notice: 'User was successfully updated.'
+    if user_params[:password].present?
+      if @user.update(user_params)
+        redirect_to admin_users_path, notice: 'User and and password were successfully updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @user.update_without_password(user_params)
+        redirect_to admin_users_path, notice: 'User was successfully updated.'
+      else
+        render :edit
+      end
     end
   end
 
@@ -48,6 +56,6 @@ class Admin::UsersController < AdminController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
   end
 end
