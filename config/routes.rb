@@ -19,6 +19,6 @@ Rails.application.routes.draw do
         post :move_lower
       end
     end
-    resources :users
+    resources :users, except: [:show]
   end
 end

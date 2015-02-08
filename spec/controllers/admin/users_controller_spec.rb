@@ -33,14 +33,6 @@ RSpec.describe Admin::UsersController, :type => :controller do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested user as @user" do
-      user = User.create! valid_attributes
-      get :show, {:id => user.to_param}
-      expect(assigns(:user)).to eq(user)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new user as @user" do
       get :new, {}
