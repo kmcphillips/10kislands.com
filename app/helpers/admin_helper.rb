@@ -4,7 +4,7 @@ module AdminHelper
   end
 
   def card_image_preview(card, opts={})
-    opts = {alt: card.title, style: "width: 200px; height: 200px;"}.merge(opts)
+    opts = {alt: card.title, style: "width: 200px; height: 200px; margin: 10px;", class: "img-thumbnail"}.merge(opts)
 
     image_tag(card.background.url(:thumb), opts)
   end

@@ -1,15 +1,21 @@
 <% if card %>
-  <%= link_to card_image_preview(card), edit_admin_card_path(card) %>
-  <div>
-    <%= link_to truncate(card.title, length: 40, omission: "…"), edit_admin_card_path(card) %>
-    <br>
+  <%= link_to card_image_preview(card), edit_admin_card_path(card), class: "pull-left" %>
+  <p style="padding-top: 10px">
+    <%= link_to card.title, edit_admin_card_path(card) %>
+  </p>
+  <div class="btn-group">
+    <%= link_to edit_admin_card_path(card), class: "btn btn-default" do %>
+      <i class="fa fa-pencil-square-o fa-lg"></i> Edit
+    <% end %>
     <% unless card.first? %>
-      <%= link_to "Move higher", move_higher_admin_card_path(card), method: :post %>
-      <br>
+      <%= link_to move_higher_admin_card_path(card), method: :post, class: "btn btn-default" do %>
+        <i class="fa fa-arrow-up fa-lg"></i>
+      <% end %>
     <% end %>
     <% unless card.last? %>
-      <%= link_to "Move lower", move_lower_admin_card_path(card), method: :post %>
-      <br>
+      <%= link_to move_lower_admin_card_path(card), method: :post, class: "btn btn-default" do %>
+        <i class="fa fa-arrow-down fa-lg"></i>
+      <% end %>
     <% end %>
   </div>
 <% end %>
