@@ -11,11 +11,14 @@ RSpec.describe HomeHelper, :type => :helper do
       expect(helper.class_for_index(5)).to eq("small2")
     end
 
-    it "should extrapolate future classes that don't yet exist" do
-      expect(helper.class_for_index(6)).to eq("big3")
-      expect(helper.class_for_index(7)).to eq("small3")
-      expect(helper.class_for_index(8)).to eq("small3")
-      expect(helper.class_for_index(9)).to eq("big4")
+    it "should extrapolate wraps for future cards that don't exist yet" do
+      expect(helper.class_for_index(6)).to eq("big")
+      expect(helper.class_for_index(7)).to eq("small")
+      expect(helper.class_for_index(8)).to eq("small")
+      expect(helper.class_for_index(9)).to eq("big2")
+      expect(helper.class_for_index(10)).to eq("small2")
+      expect(helper.class_for_index(11)).to eq("small2")
+      expect(helper.class_for_index(12)).to eq("big")
     end
   end
 end

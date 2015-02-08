@@ -1,15 +1,16 @@
 module HomeHelper
 
   def class_for_index(index)
-    klass = if index % 3 == 0
+    case index % 6
+    when 0
       "big"
-    else
+    when 1, 2
       "small"
+    when 3
+      "big2"
+    when 4, 5
+      "small2"
     end
-
-    klass << ((index / 3) + 1).to_s if index >= 3
-
-    klass
   end
 
 end
