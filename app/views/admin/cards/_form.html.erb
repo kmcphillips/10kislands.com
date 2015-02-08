@@ -13,8 +13,8 @@
 
   <div>
     <%= f.label :background, "Background image" %>
-    <%= f.file_field :background %>
-    <%= card_image_preview @card %>
+    <%= f.file_field :background, onchange: "previewImage(this, 'image_preview');" %>
+    <%= card_image_preview @card, id: "image_preview" %>
   </div>
 
   <div class="actions">
