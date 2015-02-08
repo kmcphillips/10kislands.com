@@ -16,6 +16,7 @@ gem 'capistrano-passenger'
 
 gem 'acts_as_list'
 gem 'paperclip'
+gem 'devise'
 
 group :development do
   gem 'web-console', '~> 2.0'
