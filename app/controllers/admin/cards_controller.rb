@@ -1,8 +1,15 @@
 class Admin::CardsController < AdminController
-  before_action :load_card, only: [:move_higher, :move_lower]
+  before_action :load_card, only: [:edit, :update, :move_higher, :move_lower]
 
   def index
     @cards = Card.sorted
+  end
+
+  def edit
+  end
+
+  def update
+
   end
 
   def move_higher

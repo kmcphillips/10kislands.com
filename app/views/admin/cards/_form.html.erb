@@ -1,0 +1,23 @@
+<%= form_for([:admin, @card]) do |f| %>
+  <%= error_messages(f) %>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 5, cols: 40 %>
+  </div>
+
+  <div>
+    <%= f.label :link, "YouTube link" %>
+    <%= f.text_field :link, size: 50 %>
+  </div>
+
+  <div>
+    <%= f.label :background, "Background image" %>
+    <%= f.file_field :background %>
+    <%= image_tag(@card.background.url(:thumb), alt: @card.title) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

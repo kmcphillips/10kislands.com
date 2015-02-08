@@ -1,0 +1,9 @@
+<div id="error_explanation">
+  <h2>Aww dang... There were <%= pluralize(object.errors.count, "error") %> when saving</h2>
+
+  <ul>
+  <% object.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+</div>
