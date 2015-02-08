@@ -1,5 +1,5 @@
 <% if card %>
-  <%= link_to image_tag(card.background.url(:thumb), alt: card.title), edit_admin_card_path(card) %>
+  <%= link_to card_image_preview(card), edit_admin_card_path(card) %>
   <div>
     <%= link_to truncate(card.title, length: 40, omission: "…"), edit_admin_card_path(card) %>
     <br>

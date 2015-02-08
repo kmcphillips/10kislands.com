@@ -14,7 +14,7 @@
   <div>
     <%= f.label :background, "Background image" %>
     <%= f.file_field :background %>
-    <%= image_tag(@card.background.url(:thumb), alt: @card.title) %>
+    <%= card_image_preview @card %>
   </div>
 
   <div class="actions">
