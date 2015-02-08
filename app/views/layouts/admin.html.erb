@@ -48,22 +48,30 @@
         </button>
         <a class="navbar-brand" href="/">10K Islands</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              <%= link_to "Home Page", admin_root_path %>
-            </li>
-            <li>
-              <%= link_to "Manage Users", admin_users_path %>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav pull-right">
-            <li>
-            <%= link_to "Support", "http://kevinmcphillips.ca" %>
-            </li>
-            <li>
-              <%= link_to "Logout", logout_path %>
-            </li>
-          </ul>
+          <% if current_user %>
+            <ul class="nav navbar-nav">
+              <li>
+                <%= link_to "Home Page", admin_root_path %>
+              </li>
+              <li>
+                <%= link_to "Manage Users", admin_users_path %>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+              <li>
+              <%= link_to "Support", "http://kevinmcphillips.ca" %>
+              </li>
+              <li>
+                <%= link_to "Logout", logout_path %>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="nav navbar-nav pull-right">
+              <li>
+              <%= link_to "Support", "http://kevinmcphillips.ca" %>
+              </li>
+            </ul>
+          <% end %>
         </div>
       </div>
     </div>
