@@ -1,3 +1,15 @@
 <% if card %>
   <%= image_tag card.background.url(:thumb), alt: card.title %>
+  <div>
+    <%= truncate(card.title, length: 40, omission: "…") %>
+    <br>
+    <% unless card.first? %>
+      Move up
+      <br>
+    <% end %>
+    <% unless card.last? %>
+      Move down
+      <br>
+    <% end %>
+  </div>
 <% end %>

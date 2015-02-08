@@ -3,12 +3,12 @@
 <table>
   <% @cards.each_slice(6) do |card, index| %>
     <tr>
-      <th colspan="2" rowspan="2">
+      <td colspan="2" rowspan="2">
         <%= render "card_index", card: @cards[0] %>
-      </th>
-      <th colspan="2">
+      </td>
+      <td colspan="2">
         <%= render "card_index", card: @cards[1] %>
-      </th>
+      </td>
     </tr>
     <tr>
       <td colspan="2">
