@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root "users#index"
+    root "cards#index"
 
+    resources :cards, only: [:index]
     resources :users
   end
 end

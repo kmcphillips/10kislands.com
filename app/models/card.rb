@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
   validates :description, presence: true
 
   has_attached_file :background, styles: {
-    thumb: ["32x32#", :png]
+    thumb: ["200x200#", :png]
   }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
 
