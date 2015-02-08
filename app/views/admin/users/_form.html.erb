@@ -2,6 +2,9 @@
   <%= error_messages(f) %>
 
   <div>
+    <% if @user == current_user %>
+      This is you
+    <% end %>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
