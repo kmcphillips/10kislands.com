@@ -4,11 +4,11 @@
     <%= truncate(card.title, length: 40, omission: "…") %>
     <br>
     <% unless card.first? %>
-      Move up
+      <%= link_to "Move higher", move_higher_admin_card_path(card), method: :post %>
       <br>
     <% end %>
     <% unless card.last? %>
-      Move down
+      <%= link_to "Move lower", move_lower_admin_card_path(card), method: :post %>
       <br>
     <% end %>
   </div>

@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   namespace :admin do
     root "cards#index"
 
-    resources :cards, only: [:index]
+    resources :cards, only: [:index] do
+      member do
+        post :move_higher
+        post :move_lower
+      end
+    end
     resources :users
   end
 end
