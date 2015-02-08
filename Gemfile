@@ -24,6 +24,10 @@ group :development do
   gem 'thin'
 end
 
+group :test do
+  gem 'database_cleaner', git: 'git@github.com:DatabaseCleaner/database_cleaner.git'
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'

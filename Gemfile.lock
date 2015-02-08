@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:DatabaseCleaner/database_cleaner.git
+  revision: bef9fe27e7fdf470b737c4f9140c7f029f81b607
+  specs:
+    database_cleaner (1.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -227,6 +233,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   coffee-rails (~> 4.1.0)
+  database_cleaner!
   devise
   jquery-rails
   paperclip
