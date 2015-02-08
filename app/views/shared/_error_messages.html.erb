@@ -1,5 +1,6 @@
-<div id="error_explanation">
-  <h2>Aww dang... There were <%= pluralize(object.errors.count, "error") %> when saving</h2>
+<div id="error_explanation" class="alert fade in alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <h4>Aww dang... There were <%= pluralize(object.errors.count, "error") %> when saving</h4>
 
   <ul>
   <% object.errors.full_messages.each do |message| %>
