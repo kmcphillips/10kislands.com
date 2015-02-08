@@ -9,7 +9,11 @@ class Admin::CardsController < AdminController
   end
 
   def update
-
+    if @card.update(card_params)
+      redirect_to admin_cards_path, notice: 'Update successful.'
+    else
+      render :edit
+    end
   end
 
   def move_higher
@@ -29,6 +33,6 @@ class Admin::CardsController < AdminController
   end
 
   def card_params
-    params.require(:card).permit(:description, :link)
+    params.require(:card).permit(:description, :link, :background)
   end
 end
