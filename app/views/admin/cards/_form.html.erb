@@ -1,23 +1,25 @@
 <%= form_for([:admin, @card]) do |f| %>
   <%= error_messages(f) %>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description, rows: 5, cols: 40 %>
+  <div class="form-group">
+    <%= f.label :description, "Description text" %>
+    <%= f.text_area :description, class: "form-control", rows: 5, cols: 40 %>
+    <!-- <p class="help-block">Accepts multiple lines</p> -->
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :link, "YouTube link" %>
-    <%= f.text_field :link, size: 50 %>
+    <%= f.text_field :link, class: "form-control", size: 50, placeholder: "http://youtube.com/watch" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :background, "Background image" %>
-    <%= f.file_field :background, onchange: "previewImage(this, 'image_preview');" %>
+    <%= f.file_field :background, class: "form-control", onchange: "previewImage(this, 'image_preview');" %>
     <%= card_image_preview @card, id: "image_preview" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to 'Back', admin_cards_path, class: "btn btn-default" %>
   </div>
 <% end %>
