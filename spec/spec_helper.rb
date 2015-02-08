@@ -1,3 +1,5 @@
+require 'devise'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -19,4 +21,5 @@ RSpec.configure do |config|
   # end
   # config.profile_examples = 10
 
+  config.include Devise::TestHelpers, type: :controller
 end
