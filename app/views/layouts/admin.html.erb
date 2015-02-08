@@ -8,6 +8,22 @@
 </head>
 <body>
 
+<h1>10kislands Admin</h1>
+
+<nav>
+  <ul>
+    <li>
+      <%= link_to "Main Page", admin_root_path %>
+    </li>
+    <li>
+      <%= link_to "Manage Users", admin_users_path %>
+    </li>
+    <li>
+    <%= link_to "Logout", logout_path %>
+    </li>
+  </ul>
+</nav>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
