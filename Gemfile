@@ -29,6 +29,7 @@ end
 
 group :test do
   gem 'database_cleaner', git: 'git@github.com:DatabaseCleaner/database_cleaner.git'
+  gem 'rspec-activejob'
 end
 
 group :development, :test do

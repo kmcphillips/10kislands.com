@@ -1,4 +1,5 @@
 require 'devise'
+require 'rspec/active_job'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -34,4 +35,5 @@ RSpec.configure do |config|
     end
   end
 
+  config.include(RSpec::ActiveJob)
 end

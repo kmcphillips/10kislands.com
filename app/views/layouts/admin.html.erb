@@ -56,6 +56,12 @@
               <li>
                 <%= link_to "Manage Users", admin_users_path %>
               </li>
+              <li>
+                <%= link_to admin_publish_index_path, method: :post, data: { confirm: "Do you want to publish the site?" } do %>
+                  <i class="fa fa-external-link-square fa-lg"></i>
+                  Publish site
+                <% end %>
+              </li>
             </ul>
             <ul class="nav navbar-nav pull-right">
               <li>

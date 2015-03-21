@@ -19,6 +19,9 @@ Rails.application.routes.draw do
         post :move_lower
       end
     end
+
+    resources :publish, only: [:create]
+
     resources :users, except: [:show]
   end
 end
