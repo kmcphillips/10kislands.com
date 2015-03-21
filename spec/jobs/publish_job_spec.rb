@@ -5,7 +5,7 @@ RSpec.describe PublishJob, type: :job do
 
   describe "#perform" do
     it "should accept a user id" do
-      PublishJob.new.perform(user_id: user.id)
+      PublishJob.new.perform(user: user)
     end
   end
 end

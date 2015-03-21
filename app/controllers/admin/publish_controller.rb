@@ -2,7 +2,7 @@ class Admin::PublishController < AdminController
 
   def create
     begin
-      PublishJob.perform_later(user_id: current_user.id)
+      PublishJob.perform_later(user: current_user)
 
       redirect_to admin_root_path, notice: "Site has been published"
     rescue => e

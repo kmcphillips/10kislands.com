@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Admin::PublishController, type: :controller do
+  let(:user){ double('user', id: 123) }
+
   before do
-    user = double('user', id: 123)
     request.env['warden'] = double
     allow(request.env['warden']).to receive(:authenticate!) { user }
     allow(controller).to receive(:current_user) { user }
@@ -12,7 +13,7 @@ RSpec.describe Admin::PublishController, type: :controller do
     it "enqueues and redirects" do
       expect{
         post :create
-      }.to enqueue_a(PublishJob).with(user_id: 123)
+      }.to enqueue_a(PublishJob).with(user: user)
 
       expect(response).to redirect_to(admin_root_path)
       expect(flash[:notice]).to_not be_blank
