@@ -23,7 +23,11 @@ class PublishJob < ActiveJob::Base
 
   def setup(opts)
     @user = opts[:user]
-    @uploader = FtpUploader.new
+    @uploader = FtpUploader.new(
+      Rails.application.secrets.ftp[:host],
+      Rails.application.secrets.ftp[:username],
+      Rails.application.secrets.ftp[:password]
+    )
   end
 
   def prepare_cards
@@ -36,6 +40,7 @@ class PublishJob < ActiveJob::Base
 
   def log_attempt
     Rails.logger.info("[#{ self.class }] Attempting publish by #{ @user.try(:name) || "unknown" }")
+    Rails.logger.info("[#{ self.class }] Destination: #{ uploader }")
     @start = Time.now
   end
 
