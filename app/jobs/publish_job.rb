@@ -1,8 +1,10 @@
 class PublishJob < ActiveJob::Base
   queue_as :default
 
+  attr_reader :uploader
+
   def perform(opts={})
-    @user = opts[:user]
+    setup(opts)
 
     begin
       log_attempt
@@ -19,12 +21,17 @@ class PublishJob < ActiveJob::Base
 
   private
 
+  def setup(opts)
+    @user = opts[:user]
+    @uploader = FtpUploader.new
+  end
+
   def prepare_cards
     # TODO
   end
 
   def upload
-    # TODO
+    uploader.upload
   end
 
   def log_attempt
