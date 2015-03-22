@@ -28,10 +28,11 @@ class PublishJob < ActiveJob::Base
       Rails.application.secrets.ftp[:username],
       Rails.application.secrets.ftp[:password]
     )
+    @renderer = PageRenderer.new
   end
 
   def prepare_cards
-    # TODO
+    index = @renderer.home
   end
 
   def upload

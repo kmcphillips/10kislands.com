@@ -1,7 +1,7 @@
 <div class="home-part-2">
-  <%= render "card", card: @cards.first, index: 1, hidden: true %>
+  <%= render "page/card", card: @cards.first, index: 1, hidden: true %>
 
   <% @cards.each_with_index do |card, index| %>
-    <%= render "card", card: card, index: index %>
+    <%= render "page/card", card: card, index: index %>
   <% end %>
 </div>
