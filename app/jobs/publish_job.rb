@@ -1,7 +1,7 @@
 class PublishJob < ActiveJob::Base
   queue_as :default
 
-  attr_reader :uploader
+  attr_reader :uploader, :renderer
 
   def perform(opts={})
     setup(opts)
@@ -32,7 +32,12 @@ class PublishJob < ActiveJob::Base
   end
 
   def prepare_cards
-    index = @renderer.home
+    index = Tempfile.new("home")
+    index.write(renderer.home)
+
+    uploader.add(index, "/", filename: "index_test.html")
+
+    # TODO: Images
   end
 
   def upload
