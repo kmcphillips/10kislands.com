@@ -13,7 +13,7 @@ RSpec.describe Admin::PublishController, type: :controller do
     it "enqueues and redirects" do
       expect{
         post :create
-      }.to enqueue_a(PublishJob).with(user: user)
+      }.to enqueue_a(PublishJob).with(user_id: user.id)
 
       expect(response).to redirect_to(admin_root_path)
       expect(flash[:notice]).to_not be_blank

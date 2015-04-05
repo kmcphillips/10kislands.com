@@ -7,6 +7,12 @@ class PageRenderer
     )
   end
 
+  def home_assets
+    cards.map do |card|
+      card.background
+    end
+  end
+
   private
 
   def cards

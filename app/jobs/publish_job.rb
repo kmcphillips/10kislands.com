@@ -22,7 +22,7 @@ class PublishJob < ActiveJob::Base
   private
 
   def setup(opts)
-    @user = opts[:user]
+    @user = User.find_by_id(opts[:user_id])
     @uploader = FtpUploader.new(
       Rails.application.secrets.ftp[:host],
       Rails.application.secrets.ftp[:username],
@@ -37,7 +37,9 @@ class PublishJob < ActiveJob::Base
 
     uploader.add(index, "/", filename: "index_test.html")
 
-    # TODO: Images
+    renderer.home_assets.each do |asset|
+
+    end
   end
 
   def upload
