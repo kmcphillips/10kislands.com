@@ -21,4 +21,17 @@ RSpec.describe HomeHelper, :type => :helper do
       expect(helper.class_for_index(12)).to eq("big")
     end
   end
+
+  describe "#card_image_size" do
+    it "should know the class by the index number" do
+      expect(helper.card_image_size(0)).to eq(:big)
+      expect(helper.card_image_size(1)).to eq(:small)
+      expect(helper.card_image_size(2)).to eq(:small)
+      expect(helper.card_image_size(3)).to eq(:big)
+      expect(helper.card_image_size(4)).to eq(:small)
+      expect(helper.card_image_size(5)).to eq(:small)
+      expect(helper.card_image_size(6)).to eq(:big)
+      expect(helper.card_image_size(7)).to eq(:small)
+    end
+  end
 end

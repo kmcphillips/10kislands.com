@@ -4,7 +4,7 @@
       <span>
         <%= simple_format(card.description) %>
       </span>
-      <%= image_tag card.background.url, alt: card.title %>
+      <%= image_tag card.background.url(card_image_size(index)), alt: card.title %>
     <% end %>
   </div>
 </div>
