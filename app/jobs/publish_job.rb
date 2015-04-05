@@ -35,7 +35,7 @@ class PublishJob < ActiveJob::Base
     index = Tempfile.new("home")
     index.write(renderer.home)
 
-    uploader.add(index, "/", filename: "index_test.html")
+    uploader.add(index, "/index_test.html")
 
     renderer.home_assets.each do |asset|
       [:thumb].each do |size|

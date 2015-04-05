@@ -8,7 +8,7 @@ RSpec.describe FtpUploader do
 
   describe "#inspect" do
     it "should be tested" do
-      expect(uploader.inspect).to eq("#<FtpUploader host:example.com username:someone password:[SET] pending_files:0>")
+      expect(uploader.inspect).to eq("#<FtpUploader host:example.com username:someone password:***** pending_files:0>")
     end
   end
 
@@ -18,12 +18,19 @@ RSpec.describe FtpUploader do
 
     it "should add a hash with params" do
       uploader.add(text_file, "path/to/file.txt")
-      uploader.add(binary_file, "path/to/file.bin", filename: "override.bin", binary: "yes")
+      uploader.add(binary_file, "path/to/file.bin", binary: "yes")
 
-      expect(uploader.files).to eq([
-        {file: text_file, path: "path/to/file.txt", filename: nil, binary: false},
-        {file: binary_file, path: "path/to/file.bin", filename: "override.bin", binary: true}
-      ])
+      expect(uploader.files.length).to eq(2)
+
+      file = uploader.files.first
+      expect(file.path).to eq("path/to")
+      expect(file.filename).to eq("file.txt")
+      expect(file.binary).to be_falsy
+
+      file = uploader.files.last
+      expect(file.path).to eq("path/to")
+      expect(file.filename).to eq("file.bin")
+      expect(file.binary).to be_truthy
     end
   end
 
