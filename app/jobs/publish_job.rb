@@ -53,7 +53,7 @@ class PublishJob < ActiveJob::Base
 
   def log_attempt
     Rails.logger.info("[#{ self.class }] Attempting publish by #{ @user.try(:name) || "unknown" }")
-    Rails.logger.info("[#{ self.class }] Destination: #{ uploader }")
+    Rails.logger.info("[#{ self.class }] Destination: #{ uploader.inspect }")
     @start = Time.now
   end
 

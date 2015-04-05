@@ -14,6 +14,7 @@ class FtpUploader
   end
 
   def upload
+    log "Starting upload"
     raise "Host must be set" if host.blank?
 
     Net::FTP.new(@host, @username, @password) do |ftp|
@@ -58,6 +59,8 @@ class FtpUploader
 
         log "Finished processing #{ file }"
       end
+
+      log "Upload finished"
 
       @files = []
     end
