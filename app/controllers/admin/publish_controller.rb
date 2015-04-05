@@ -8,6 +8,7 @@ class Admin::PublishController < AdminController
     rescue => e
       Rails.logger.error("Failed to publish")
       Rails.logger.error(e)
+      Rails.logger.error(e.backtrace.join("\n"))
 
       redirect_to admin_root_path, flash: { error: "There was a problem publishing the site. If it persists, contact the site admin. Error: #{ e.message }" }
     end

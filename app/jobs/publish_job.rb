@@ -23,12 +23,15 @@ class PublishJob < ActiveJob::Base
 
   def setup(opts)
     @user = User.find_by_id(opts[:user_id])
+    @renderer = PageRenderer.new
+
+    raise "Cannot find FTP credentials" unless Rails.application.secrets.ftp
+
     @uploader = FtpUploader.new(
       Rails.application.secrets.ftp["host"],
       Rails.application.secrets.ftp["username"],
       Rails.application.secrets.ftp["password"]
     )
-    @renderer = PageRenderer.new
   end
 
   def prepare_cards
