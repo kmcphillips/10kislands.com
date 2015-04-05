@@ -10,10 +10,14 @@ class FtpUploader
   end
 
   def add(file, path, opts={})
+    file = File.new(file) if file.is_a?(String)
+
     @files << {file: file, path: path, filename: opts[:filename], binary: !!opts[:binary]}
   end
 
   def upload
+    raise "Host must be set" if host.blank?
+
     Net::FTP.new(@host, @username, @password) do |ftp|
       ftp.login
 

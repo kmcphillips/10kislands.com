@@ -24,9 +24,9 @@ class PublishJob < ActiveJob::Base
   def setup(opts)
     @user = User.find_by_id(opts[:user_id])
     @uploader = FtpUploader.new(
-      Rails.application.secrets.ftp[:host],
-      Rails.application.secrets.ftp[:username],
-      Rails.application.secrets.ftp[:password]
+      Rails.application.secrets.ftp["host"],
+      Rails.application.secrets.ftp["username"],
+      Rails.application.secrets.ftp["password"]
     )
     @renderer = PageRenderer.new
   end
@@ -38,7 +38,9 @@ class PublishJob < ActiveJob::Base
     uploader.add(index, "/", filename: "index_test.html")
 
     renderer.home_assets.each do |asset|
-
+      [:thumb].each do |size|
+        uploader.add(asset.path(size), asset.url(size).gsub(/\?[0-9]+\Z/, ""), binary: true)
+      end
     end
   end
 
