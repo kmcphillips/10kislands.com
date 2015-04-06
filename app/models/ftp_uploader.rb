@@ -14,56 +14,57 @@ class FtpUploader
   end
 
   def upload
-    log "Starting upload"
+    log "Starting upload of #{ @files.count } files"
     raise "Host must be set" if host.blank?
 
-    Net::FTP.new(@host, @username, @password) do |ftp|
-      # ftp.login
+    ftp = Net::FTP.new(@host, @username, @password)
+    log ftp.inspect
 
-      @files.each do |file|
-        log "Processing #{ file }"
+    @files.each do |file|
+      log "Processing #{ file.inspect }"
 
-        ftp.chdir("~")
+      ftp.chdir("~")
 
-        begin
-          log "Changing to path #{ file.path }"
-          ftp.chdir(file.path)
-          log "Path found"
-        rescue Net::FTPPermError => e
-          log "Path not found", e
+      begin
+        log "Changing to path #{ file.path }"
+        ftp.chdir(file.path)
+        log "Path found"
+      rescue Net::FTPPermError => e
+        log "Path not found", e
 
-          file.segments.each do |segment|
-            begin
-              log "Changing to path segment #{ segment }"
-              ftp.chdir(segment)
-              log "Path segment found"
-            rescue Net::FTPPermError => ee
-              log "Path segment not found", ee
-              log "Creating path #{ segment }"
-              ftp.mkdir(segment)
-              log "Changing to created path segment #{ segment }"
-              ftp.chdir(segment)
-            end
+        file.segments.each do |segment|
+          begin
+            log "Changing to path segment '#{ segment }'"
+            ftp.chdir(segment)
+            log "Path segment found"
+          rescue Net::FTPPermError => ee
+            log "Path segment not found", ee
+            log "Creating path '#{ segment }'"
+            ftp.mkdir(segment)
+            log "Changing to created path segment '#{ segment }'"
+            ftp.chdir(segment)
           end
         end
-
-        log "Currently working in #{ ftp.pwd }"
-
-        if file.binary
-          log "Uploading binary file #{ file.file } => #{ file.filename }"
-          ftp.putbinaryfile(file.file, file.filename)
-        else
-          log "Uploading text file #{ file.file } => #{ file.filename }"
-          ftp.puttextfile(file.file, file.filename)
-        end
-
-        log "Finished processing #{ file }"
       end
 
-      log "Upload finished"
+      log "Currently working in #{ ftp.pwd }"
 
-      @files = []
+      if file.binary
+        log "Uploading binary file #{ file.file } => #{ file.filename }"
+        ftp.putbinaryfile(file.file, file.filename)
+      else
+        log "Uploading text file #{ file.file } => #{ file.filename }"
+        ftp.puttextfile(file.file, file.filename)
+      end
+
+      log "Finished processing #{ file.inspect }"
     end
+
+    log "Upload finished"
+
+    ftp.close
+
+    @files = []
   end
 
   def inspect
@@ -73,7 +74,7 @@ class FtpUploader
   private
 
   def log(message, exception=nil)
-    Rails.logger.info("[#{ self.class.name }] #{ message } #{ exception.try(:message) }")
+    Rails.logger.info("[#{ self.class.name }] #{ message } #{ exception.try(:message) ? ": #{ exception.message }" : "" }")
   end
 
   class FtpUploadFile

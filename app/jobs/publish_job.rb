@@ -41,7 +41,7 @@ class PublishJob < ActiveJob::Base
     uploader.add(index, "/index_test.html")
 
     renderer.home_assets.each do |asset|
-      [:thumb].each do |size|
+      [:big, :small].each do |size|
         uploader.add(asset.path(size), asset.url(size).gsub(/\?[0-9]+\Z/, ""), binary: true)
       end
     end
