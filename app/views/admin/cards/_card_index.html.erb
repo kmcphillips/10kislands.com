@@ -9,12 +9,12 @@
     <% end %>
     <% unless card.first? %>
       <%= link_to move_higher_admin_card_path(card), method: :post, class: "btn btn-default" do %>
-        <i class="fa fa-arrow-up fa-lg"></i>
+        <i class="fa fa-arrow-<%= higher_arrow_for_index(index) %> fa-lg"></i>
       <% end %>
     <% end %>
     <% unless card.last? %>
       <%= link_to move_lower_admin_card_path(card), method: :post, class: "btn btn-default" do %>
-        <i class="fa fa-arrow-down fa-lg"></i>
+        <i class="fa fa-arrow-<%= lower_arrow_for_index(index) %> fa-lg"></i>
       <% end %>
     <% end %>
   </div>

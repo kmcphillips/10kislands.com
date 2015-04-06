@@ -1,31 +1,31 @@
 <h1>Manage Main Page</h1>
 
 <table class="table table-bordered">
-  <% @cards.each_slice(6) do |card, index| %>
+  <% @cards.each_slice(6) do |cards| %>
     <tr>
       <td colspan="2" rowspan="2">
-        <%= render "card_index", card: @cards[0] %>
+        <%= render "card_index", card: cards[0], index: 0 %>
       </td>
       <td colspan="2">
-        <%= render "card_index", card: @cards[1] %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <%= render "card_index", card: @cards[2] %>
+        <%= render "card_index", card: cards[1], index: 1 %>
       </td>
     </tr>
     <tr>
       <td colspan="2">
-        <%= render "card_index", card: @cards[4] %>
+        <%= render "card_index", card: cards[2], index: 2 %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= render "card_index", card: cards[4], index: 4 %>
       </td>
       <td colspan="2" rowspan="2">
-        <%= render "card_index", card: @cards[3] %>
+        <%= render "card_index", card: cards[3], index: 3 %>
       </td>
     </tr>
     <tr>
       <td colspan="2">
-        <%= render "card_index", card: @cards[5] %>
+        <%= render "card_index", card: cards[5], index: 5 %>
       </td>
     </tr>
 
