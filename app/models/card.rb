@@ -8,8 +8,8 @@ class Card < ActiveRecord::Base
 
   has_attached_file :background, styles: {
     thumb: ["200x200#", :png],
-    small: ["444x315^", :png],
-    big: ["885x690^", :png]
+    small: ["444x315^", :jpg],
+    big: ["885x690^", :jpg]
   }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
 
