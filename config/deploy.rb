@@ -6,11 +6,10 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :debug
 set :keep_releases, 5
+set :default_stage, "production"
 
-# set :deploy_to, '/var/www/my_app_name'
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-# set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 namespace :deploy do
   after :restart, :clear_cache do
