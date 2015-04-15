@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  EMBED_LINK_REGEX = /\Ahttps?:\/\/(www\.)?(youtube\.com|youtu.be)\//
+  EMBED_LINK_REGEX = /\Ahttps?:\/\/(www\.)?(youtube\.com|youtu\.be|vimeo\.com)\//
 
   acts_as_list
 
