@@ -19,8 +19,13 @@ RSpec.describe Card, :type => :model do
         expect(card).to be_valid
       end
 
+      it "should allow Vimeo link" do
+        card.link = "http://vimeo.com/12345"
+        expect(card).to be_valid
+      end
+
       it "should not allow other video sites" do
-        card.link = "http://vimeo.com/fancy"
+        card.link = "http://myvideo.com/1234"
         expect(card).to_not be_valid
       end
     end
